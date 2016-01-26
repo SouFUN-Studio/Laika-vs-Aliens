@@ -1,0 +1,4 @@
+Lugar donde se colocran todas las canciones del juego !!!SOLO CANCIONES!!!
+
+Soundstrack donde se pueda transmitir al jugador emociones (fuertes, debiles, relajantes, estresantes);
+Duración del audio limitado.
