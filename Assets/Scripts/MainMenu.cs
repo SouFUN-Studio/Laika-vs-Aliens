@@ -28,9 +28,7 @@ public class MainMenu : MonoBehaviour {
 	 * 
 	 */
 	public void startPress(){
-		Debug.Log ("Se presiono el boton start");
 		backgroundMover ();
-		Debug.Log ("Se salio del metodo backgroundMover");
 		selectLevel.enabled = true;
 		startText.enabled = false;
 		startText.gameObject.SetActive (false);
