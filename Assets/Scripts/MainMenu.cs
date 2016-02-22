@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
 
     /* Use this for initialization
 	 * TODO el codigo va aqui
@@ -14,6 +15,8 @@ public class MainMenu : MonoBehaviour {
     public Button helpButton;
     private Transform cameraTransform;
     private Transform cameraDesiredLookAt;
+    //efectos
+    public AudioSource startAudio;
     //canvas select level 
     public Button level1;
     public Button level2;
@@ -27,7 +30,8 @@ public class MainMenu : MonoBehaviour {
     public Button level10;
     public Button back;
    
-    void Start () {
+    void Start ()
+    {
         cameraTransform = Camera.main.transform;
         helpMenu = helpMenu.GetComponent<Canvas>();
         selectWeaponMenu = selectWeaponMenu.GetComponent<Canvas>();
@@ -50,8 +54,10 @@ public class MainMenu : MonoBehaviour {
         back = back.GetComponent<Button>();
     }
 
-    void Update(){
-        if(cameraDesiredLookAt != null) {
+    void Update()
+    {
+        if(cameraDesiredLookAt != null)
+        {
             cameraTransform.position = Vector3.Lerp(
                 new Vector3 (cameraTransform.position.x, cameraTransform.position.y, -2),
                 cameraDesiredLookAt.position,
@@ -61,7 +67,8 @@ public class MainMenu : MonoBehaviour {
     /*
      * Metodo que muestra el menu de ayuda del menu principal
      */
-    public void helpPress(){
+    public void helpPress()
+    {
         helpMenu.enabled = true;
         startText.enabled = false;
         optionText.enabled = false;
@@ -70,14 +77,18 @@ public class MainMenu : MonoBehaviour {
     /*
      *Metodo que cierra la ventana emergente del menu de ayuda
      */
-    public void helpclosePress(){
+    public void helpClosePress()
+    {
         helpMenu.enabled = false;
         startText.enabled = true;
         optionText.enabled = true;
         helpButton.enabled = true;
     }
-
-    public void selectWeaponPress()
+    /*
+    *Metodo que muestra el seleccionador de armas de cualquier nivel, FORMA SENCILLA DEL MENU QUE SOLO SE MUESTRA
+    *COMPLETAR CODIGO PARA TODOS LOS NIVELES CON LAS DOIFERENTES ARMAS
+    */
+    public void selecLevelPress()
     {
         selectWeaponMenu.enabled = true;
         level1.enabled = false;
@@ -92,10 +103,11 @@ public class MainMenu : MonoBehaviour {
         level10.enabled = false;
         back.enabled = false;
     }
-
+    /*
+    *Metodo que cierra el seleccionador de armas 
+    */
     public void selectWeaponclose()
     {
-
         selectWeaponMenu.enabled = false;
         level1.enabled = true;
         level2.enabled = true;
@@ -114,13 +126,21 @@ public class MainMenu : MonoBehaviour {
 	 * se encarga de activar los niveles y desactivar los demas botones de la ventana principal
 	 * 
 	 */
-	public void lookAtMenu(Transform targetPosition){
+	public void lookAtMenu(Transform targetPosition)
+    {
         cameraDesiredLookAt = targetPosition;
         //Camera.main.transform.position = new Vector3 (targetPosition.position.x,targetPosition.position.y, -2);
     }
-    
+    /*
+    *
+    */
+    public void pressStart()
+    {
+        startAudio.enabled = true;
+    }
 	//El metodo sera movido a el script de la seleccion de los niveles a no ser que se haga todo el script del menu en uno solo
-	public void startLevel(){
+	public void startLevel()
+    {
         UnityEngine.SceneManagement.LoadSceneMode mode;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1, mode = UnityEngine.SceneManagement.LoadSceneMode.Single);
 		//Application.LoadLevel (1); obsolete
