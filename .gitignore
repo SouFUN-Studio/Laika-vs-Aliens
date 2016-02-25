@@ -24,3 +24,6 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Blender 3D models generated blend1 On Render
+*.blend1
